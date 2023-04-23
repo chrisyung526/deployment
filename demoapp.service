@@ -2,8 +2,8 @@
 Description=Manage Java service
 
 [Service]
-WorkingDirectory=/opt/demoapp
-ExecStart=/bin/java -jar demoapp.jar --spring.config.location=<config_file_path>
+WorkingDirectory=<base_dir>
+ExecStart=/bin/java -jar <jar_file>
 User=jvmapps
 Type=simple
 Restart=on-failure
