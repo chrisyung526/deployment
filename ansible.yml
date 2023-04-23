@@ -1,0 +1,66 @@
+---
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  collections:
+    - ansible.posix
+  remote_user: ubuntu
+  tasks:
+    - name: Ensure group exist
+      group:
+        name: appmgr
+        state: present
+    - name: Ensure user exist
+      user:
+        name: jvmapps
+        groups: appmgr
+        state: present
+    - name: update apt
+      block:
+        - name: Upgrade all packages to their latest version
+          apt:
+            update_cache: yes
+    - name: install java jdk
+      apt:
+        name: openjdk-17-jdk
+    - name: install java jre
+      apt:
+        name: openjdk-17-jre
+    - name: Create folder
+      file:
+        path: "/opt/demoapp"
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+    - name: Create config file folder
+      file:
+        path: "/opt/demoapp/config"
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+    - name: Copy jar
+      synchronize:
+        dest: "/opt/demoapp/demoapp.jar"
+        src: "target/demoapp.jar"
+        delete: yes
+        rsync_path: "rsync"  # Use sudo on the remote system
+        recursive: true
+    - name: Copy config file
+      synchronize:
+        dest: "/opt/demoapp/config/application.properties"
+        src: "application.properties"
+        delete: yes
+        rsync_path: "rsync"  # Use sudo on the remote system
+        recursive: true
+    - name: Copy service file
+      copy: src=demoapp.service dest=/etc/systemd/system/demoapp.service force=no
+    - name: Restart Service and Reload Daemon
+      systemd:
+        state: restarted
+        daemon_reload: true
+        name: demoapp
+    - name: Enable Service
+      systemd:
+        name: demoapp
+        enabled: true
+        masked: no
