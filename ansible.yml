@@ -4,7 +4,7 @@
   become_method: sudo
   collections:
     - ansible.posix
-  remote_user: ubuntu
+  remote_user: {{ remote_user }}
   tasks:
     - name: Ensure group exist
       group:
@@ -22,45 +22,38 @@
             update_cache: yes
     - name: install java jdk
       apt:
-        name: openjdk-17-jdk
+        name: openjdk-11-jdk
     - name: install java jre
       apt:
-        name: openjdk-17-jre
+        name: openjdk-11-jre
     - name: Create folder
       file:
-        path: "/opt/demoapp"
+        path: {{ base_path }}
         state: directory
-        owner: ubuntu
-        group: ubuntu
+        owner: {{ remote_user }}
+        group: chris
     - name: Create config file folder
       file:
-        path: "/opt/demoapp/config"
+        path: "{{ base_path }}/config"
         state: directory
-        owner: ubuntu
-        group: ubuntu
+        owner: {{ remote_user }}
+        group: chris
     - name: Copy jar
       synchronize:
-        dest: "/opt/demoapp/demoapp.jar"
-        src: "target/demoapp.jar"
-        delete: yes
-        rsync_path: "rsync"  # Use sudo on the remote system
-        recursive: true
-    - name: Copy config file
-      synchronize:
-        dest: "/opt/demoapp/config/application.properties"
-        src: "application.properties"
+        dest: "{{ base_path }}/{{ jar_name }}"
+        src: "{{ source_path }}/{{ source_file }}"
         delete: yes
         rsync_path: "rsync"  # Use sudo on the remote system
         recursive: true
     - name: Copy service file
-      copy: src=demoapp.service dest=/etc/systemd/system/demoapp.service force=no
+      copy: src={{ app_name }}.service dest=/etc/systemd/system/{{ app_name }}.service force=no
     - name: Restart Service and Reload Daemon
       systemd:
         state: restarted
         daemon_reload: true
-        name: demoapp
+        name: {{ app_name }}
     - name: Enable Service
       systemd:
-        name: demoapp
+        name: {{ app_name }}
         enabled: true
         masked: no
