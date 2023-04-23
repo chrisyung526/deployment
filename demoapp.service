@@ -1,0 +1,13 @@
+[Unit]
+Description=Manage Java service
+
+[Service]
+WorkingDirectory=/opt/demoapp
+ExecStart=/bin/java -jar demoapp.jar --spring.config.location=<config_file_path>
+User=jvmapps
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
