@@ -4,7 +4,7 @@
   become_method: sudo
   collections:
     - ansible.posix
-  remote_user: {{ remote_user }}
+  remote_user: "{{ remote_user }}"
   tasks:
     - name: Ensure group exist
       group:
@@ -28,15 +28,15 @@
         name: openjdk-11-jre
     - name: Create folder
       file:
-        path: {{ base_path }}
+        path: "{{ base_path }}"
         state: directory
-        owner: {{ remote_user }}
+        owner: "{{ remote_user }}"
         group: chris
     - name: Create config file folder
       file:
         path: "{{ base_path }}/config"
         state: directory
-        owner: {{ remote_user }}
+        owner: "{{ remote_user }}"
         group: chris
     - name: Copy jar
       synchronize:
@@ -46,14 +46,14 @@
         rsync_path: "rsync"  # Use sudo on the remote system
         recursive: true
     - name: Copy service file
-      copy: src=demoapp.service dest=/etc/systemd/system/{{ app_name }}.service force=no
+      copy: "src=demoapp.service dest=/etc/systemd/system/{{ app_name }}.service force=no"
     - name: Restart Service and Reload Daemon
       systemd:
         state: restarted
         daemon_reload: true
-        name: {{ app_name }}
+        name: "{{ app_name }}"
     - name: Enable Service
       systemd:
-        name: {{ app_name }}
+        name: "{{ app_name }}"
         enabled: true
         masked: no
