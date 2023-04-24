@@ -45,6 +45,13 @@
         delete: yes
         rsync_path: "rsync"  # Use sudo on the remote system
         recursive: true
+    - name: Copy config
+      synchronize:
+        dest: "{{ base_path }}/config"
+        src: "./dev_config"
+        delete: yes
+        rsync_path: "rsync"  # Use sudo on the remote system
+        recursive: true
     - name: Copy service file
       copy: "src=demoapp.service dest=/etc/systemd/system/{{ app_name }}.service force=no"
     - name: Restart Service and Reload Daemon
