@@ -3,7 +3,7 @@ Description=Manage Java service
 
 [Service]
 WorkingDirectory=<base_path>
-ExecStart=/bin/java -jar <jar_file>
+ExecStart=/bin/java -jar <jar_file> --spring.config.location=file:<config_path>/application.properties -DconfigDirectory=<config_path> -DuseSwagger=true -Ddatabase_IP=192.168.0.134 -DdbName=idgfid -DdbUser=USjUMGrm6abUc9UH6FKbpA== -DdbPwd=eAhLD1FtIzrE1qUmCssnHA==
 User=jvmapps
 Type=simple
 Restart=on-failure
