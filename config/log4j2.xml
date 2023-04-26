@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="ALL" monitorInterval="30">
 	<Properties>
-		<Property name="WSM_Log_INFO">$${env:configDirectory}/log/WSM</Property>
-		<Property name="Inbound_Log_INFO">$${env:configDirectory}/log/Inbound</Property>
-		<Property name="AP_Log_INFO">$${env:configDirectory}/log/AP</Property>
-		<Property name="SQL_Log_INFO">$${env:configDirectory}/log/SQL</Property>
+		<Property name="WSM_Log_INFO">${sys:configDirectory}/log/WSM</Property>
+		<Property name="Inbound_Log_INFO">${sys:configDirectory}/log/Inbound</Property>
+		<Property name="AP_Log_INFO">${sys:configDirectory}/log/AP</Property>
+		<Property name="SQL_Log_INFO">${sys:configDirectory}/log/SQL</Property>
 	</Properties>
 	<Appenders>
 		<RollingFile name="WSM_Log"
