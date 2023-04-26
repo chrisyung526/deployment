@@ -51,7 +51,7 @@
         recursive: true
     - name: Create log folder
       file:
-        path: "{{ base_path }}"/config/log
+        path: "{{ base_path }}/config/log"
         state: directory
         owner: "{{ remote_user }}"
         group: chris
