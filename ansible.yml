@@ -38,7 +38,7 @@
         state: directory
         owner: "{{ remote_user }}"
         group: chris
-    - name: Create config file folder
+    - name: Create log file folder
       file:
         path: "{{ base_path }}/config/log"
         state: directory
