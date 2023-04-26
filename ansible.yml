@@ -38,6 +38,12 @@
         state: directory
         owner: "{{ remote_user }}"
         group: chris
+    - name: Create config file folder
+      file:
+        path: "{{ base_path }}/config/log"
+        state: directory
+        owner: jvmapps
+        group: appmgr
     - name: Copy jar
       synchronize:
         dest: "{{ base_path }}/{{ jar_name }}"
