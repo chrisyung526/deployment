@@ -34,7 +34,7 @@
         group: chris
       register: file_output
       loop:
-        - config/log
+        - config
     - name: Copy jar
       synchronize:
         dest: "{{ base_path }}/{{ jar_name }}"
@@ -49,6 +49,13 @@
         delete: yes
         rsync_path: "rsync"  # Use sudo on the remote system
         recursive: true
+    - name: Create log folder
+      file:
+        path: "{{ base_path }}"/config/log
+        state: directory
+        owner: "{{ remote_user }}"
+        group: chris
+        mode: '0777'
     - name: Copy service file
       copy: "src=demoapp.service dest=/etc/systemd/system/{{ app_name }}.service force=yes"
     - name: Restart Service and Reload Daemon
