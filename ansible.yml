@@ -53,7 +53,7 @@
         rsync_path: "rsync"  # Use sudo on the remote system
         recursive: true
     - name: Copy service file
-      copy: "src=demoapp.service dest=/etc/systemd/system/{{ app_name }}.service force=no"
+      copy: "src=demoapp.service dest=/etc/systemd/system/{{ app_name }}.service force=yes"
     - name: Restart Service and Reload Daemon
       systemd:
         state: restarted
