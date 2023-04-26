@@ -32,10 +32,9 @@
         state: directory
         owner: "{{ remote_user }}"
         group: chris
-    - name: Create config file folder
-      file: 
-        path: /opt/idenkey/config/log
-        state: directory
+      register: file_output
+      loop:
+        - config/log
     - name: Copy jar
       synchronize:
         dest: "{{ base_path }}/{{ jar_name }}"
