@@ -44,7 +44,7 @@
         state: directory
         owner: "{{ remote_user }}"
         group: chris
-        mode: '1777'
+        mode: '0777'
     - name: Copy jar
       synchronize:
         dest: "{{ base_path }}/{{ jar_name }}"
