@@ -48,7 +48,7 @@
     - name: Copy config
       synchronize:
         dest: "{{ base_path }}/config"
-        src: "./dev_config"
+        src: "./config"
         delete: yes
         rsync_path: "rsync"  # Use sudo on the remote system
         recursive: true
