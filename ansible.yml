@@ -47,6 +47,7 @@
         dest: "{{ base_path }}"
         src: "./config"
         delete: yes
+        use_ssh_args: yes
         rsync_path: "echo {{ ansible_become_password }} | sudo -S -u {{ remote_user }} rsync"  # Use sudo on the remote system
         recursive: true
     - name: Create log folder
