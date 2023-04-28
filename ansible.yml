@@ -40,7 +40,7 @@
         path: /etc/sudoers
         state: present
         insertafter: '^%sudo'
-        line: "{{ user }} ALL=NOPASSWD: /usr/bin/rsync"
+        line: "{{ remote_user }} ALL=NOPASSWD: /usr/bin/rsync"
     - name: Copy jar
       synchronize:
         dest: "{{ base_path }}/{{ jar_name }}"
@@ -58,7 +58,7 @@
       lineinfile:
         path: /etc/sudoers
         state: absent
-        line: "{{ user }} ALL=NOPASSWD: /usr/bin/rsync"
+        line: "{{ remote_user }} ALL=NOPASSWD: /usr/bin/rsync"
     - name: Create log folder
       file:
         path: "{{ base_path }}/config/log"
