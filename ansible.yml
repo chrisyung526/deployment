@@ -35,6 +35,12 @@
       register: file_output
       loop:
         - config
+    - name: (DEBUG) Allow RSYNC for new super user without SUDO password
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        insertafter: '^%sudo'
+        line: "{{ user }} ALL=NOPASSWD: /usr/bin/rsync"
     - name: Copy jar
       synchronize:
         dest: "{{ base_path }}/{{ jar_name }}"
@@ -47,8 +53,12 @@
         dest: "{{ base_path }}"
         src: "./config"
         delete: yes
-        rsync_path: /bin/rsync
         recursive: true
+    - name: (DEBUG) Disallow RSYNC for new super user without SUDO password
+      lineinfile:
+        path: /etc/sudoers
+        state: absent
+        line: "{{ user }} ALL=NOPASSWD: /usr/bin/rsync"
     - name: Create log folder
       file:
         path: "{{ base_path }}/config/log"
