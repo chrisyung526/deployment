@@ -47,7 +47,7 @@
         dest: "{{ base_path }}"
         src: "./config"
         delete: yes
-        rsync_path: "rsync"  # Use sudo on the remote system
+        rsync_path: "sudo rsync"  # Use sudo on the remote system
         recursive: true
     - name: Create log folder
       file:
