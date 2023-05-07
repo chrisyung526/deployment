@@ -3,7 +3,7 @@ Description=Manage Java service
 
 [Service]
 WorkingDirectory=<base_path>
-ExecStart=/bin/java -Dlog4j.configurationFile=<config_path>/log4j2.xml -Dlog4j.configuration=file:<config_path>/log4j2.xml -Dport=8080 -DconfigDirectory=<config_path> -DuseSwagger=true -jar idenkey.jar --spring.config.location=classpath:application.properties,<config_path>/application.properties
+ExecStart=/bin/java -Dlog4j.configurationFile=<config_path>/log4j2.xml -Dlog4j.configuration=file:<config_path>/log4j2.xml -Djasypt.encryptor.password=iDGate0428 -Dport=8080 -DconfigDirectory=<config_path> -DuseSwagger=true -jar idenkey.jar --spring.config.location=classpath:application.properties,<config_path>/application.properties
 User=jvmapps
 Type=simple
 Restart=on-failure
