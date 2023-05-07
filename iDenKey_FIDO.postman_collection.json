@@ -21,7 +21,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"returnCode is '00000'\", () => {\r",
-							"    pm.expect(responseJson.returnCode).to.eql('00000');\r",
+							"    pm.expect(responseJson.returnCode).to.eql('00001');\r",
 							"});\r",
 							"\r",
 							"pm.test(\"retrunMsg is 'Success'\", () => {\r",
