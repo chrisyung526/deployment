@@ -1,12 +1,17 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: discovery-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx  
 spec:
   rules:
-    - http:
-        paths:
-          - backend:
-              serviceName: discovery
-              servicePort: 8761
-            path: /*
+  - http:
+      paths:
+      - backend:
+          service:
+            name: discovery-svc
+            port:
+              number: 8761
+        path: /
+        pathType: Prefix
