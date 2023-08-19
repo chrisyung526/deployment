@@ -130,6 +130,8 @@ data:
     # Using Multi Perso Key
     PersoKeyBAlias = 02
     PersoKeyCAlias = 03
+    EncryptUrl =
+    DecryptUrl =
   log4j2.xml: |
     <?xml version="1.0" encoding="UTF-8"?>
     <Configuration status="ALL" monitorInterval="30">
