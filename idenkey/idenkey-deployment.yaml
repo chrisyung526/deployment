@@ -18,3 +18,26 @@ spec:
         name: idenkey
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: application.properties
+          mountPath: /opt/idenkey/config/application.properties
+        - name: config.properties
+          mountPath: /opt/idenkey/config/config.properties
+        - name: log4j2.xml
+          mountPath: /opt/idenkey/config/log4j2.xml
+      volumes:
+      - name: application.properties
+        configMap:
+           name: idenkey-config
+           items:
+             - key: application.properties
+      - name: config.properties
+        configMap:
+           name: idenkey-config
+           items:
+             - key: config.properties
+      - name: log4j2.xml
+        configMap:
+           name: idenkey-config
+           items:
+             - key: log4j2.xml
