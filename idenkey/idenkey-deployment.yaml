@@ -20,11 +20,11 @@ spec:
         - containerPort: 8080
         volumeMounts:
         - name: application
-          mountPath: /opt/idenkey/config/application.properties
+          mountPath: /opt/idenkey/config
         - name: config
-          mountPath: /opt/idenkey/config/config.properties
+          mountPath: /opt/idenkey/config
         - name: log4j2
-          mountPath: /opt/idenkey/config/log4j2.xml
+          mountPath: /opt/idenkey/config
       volumes:
       - name: application
         configMap:
