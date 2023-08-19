@@ -1,0 +1,277 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: idenkey-config
+data:
+  application.properties: |
+    server.port=8080
+    spring.application.name = iDenkey
+    eureka.client.serviceUrl.defaultZone  = http://127.0.0.1:8761/eureka
+    eureka.client.healthcheck.enabled = true
+    ##disable the spring security on the management endpoints like /env, /refresh etc.
+    management.security.enabled = false
+    management.endpoints.web.exposure.include=*
+    management.endpoint.health.show-details = ALWAYS
+    spring.config.import=optional:configserver:
+    ## 1 test_mode = true (ä¸æª¢æ ¸ step 4, step 5 ; default = false)
+    test_mode = false
+    test_mode_hint = ### Test Mode:
+    #management.port = 9000
+    ## Configuring info endpoint
+    info.app.name=iDenkey4FIDO
+    info.app.description=desc iDenkey4FIDO
+    info.app.version=2.2.0
+    config_file_path=/opt/idenkey/config.properties
+    log4j_file_path=file:/opt/idenkey/log4j2.xml
+    err_msg_path=/opt/idenkey/
+    Component-A=%TGB$RFV
+    Component-B=%^TYGHBN
+    Component-C=VFR$#edc
+    spring.datasource.driver-class-name=com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
+    spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect
+    spring.datasource.url=jdbc-secretsmanager:mysql://idenkey-instance-1.ckcctg5jmane.ap-east-1.rds.amazonaws.com:3306
+    spring.datasource.username=rds!cluster-053dd780-3ce3-4787-80bd-ff5b9d0d8b66
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+    spring.jpa.properties.hibernate.dialect.storage_engine=innodb
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.format_sql=true
+    spring.jpa.hibernate.ddl-auto=none
+    spring.jpa.properties.hibernate.default_schema=dbo
+    # cache
+    spring.jpa.properties.javax.persistence.sharedCache.mode=ENABLE_SELECTIVE
+    spring.jpa.properties.hibernate.cache.use_second_level_cache=true
+    spring.jpa.properties.hibernate.cache.use_query_cache=true
+    spring.jpa.properties.hibernate.cache.region.factory_class=jcache
+    spring.jpa.properties.hibernate.cache.provider=org.ehcache.jsr107.EhcacheCachingProvider
+    spring.jpa.properties.hibernate.javax.cache.uri=ehcache.xml
+    spring.jpa.properties.hibernate.generate_statistics=true
+    logging.level.org.hibernate.SQL=DEBUG
+    logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+    #spring.datasource.maximum-pool-size=100
+    #spring.datasource.connection-timeout=300
+    #spring.datasource.connection-test-query=Select 1
+    #spring.datasource.max_wait=5000
+    #spring.datasource.initial_size=10
+    use_swagger = true
+    # To disable API
+    springdoc.api-docs.enabled=${use_swagger}
+    springdoc.api-docs.path=/rp-docs
+    springdoc.swagger-ui.operationsSorter=method
+    #springdoc.swagger-ui.path=/swagger-ui-idgate.html
+    #cron.expression = 0 0/1 * * * ?
+    ## default:v1/public/uaf/facets
+    app-ID=v1/public/uaf/facets
+    ## default:5431#3280
+    Allowed-Aaids=5431#3280
+    ## For Trace
+    #AllowedAaids=8888#6666
+    ## default:300000
+    server_data_timeout = 300000
+  config.properties: |
+    i18n_Name = Message
+    OTP_Timeout = 300000
+    Txn_Timeout = 300000
+    LoginTxn_Timeout = 300000
+    WSI_API_Key = API_Key
+    WSM_API_Key = API_Key
+    # FIDO server settings
+    # FIDO_SV_IP = http://192.168.0.116:10000/GW/WSM/
+    # validation fail limits
+    #Digital_Fail_Limit = 3
+    #Pattern_Fail_Limit = 3
+    ### ---------- iDenkey  -----------###
+    # Look out for space at tail when you're setting this config
+    ## 1 OnlyOTP = true (\u4E0D\u6AA2\u6838 step 4  \u5167\u7684 OTP and ...  ; default = false)
+    ## 2 OnlyFIDO = true (\u4E0D\u6253 step 4  \u5167\u7684 FIDO ; default = false)
+    # OnlyOTP = true
+    #OnlyFIDO = true
+    ##  default enableOTP = true
+    # enableOTP = false
+    ## æ¸¬è©¦ ECDH
+    mobilePubKey=3059301306072A8648CE3D020106082A8648CE3D0301070342000403C0A3D74A7BDFC6E8EB0BE90A821A82CB85714E9DEC74062D7E149A4E90D5526A16F52F8919FC99403C978367CEC38E788A7AB0F1E5B8936ED93D5CB01AF93C
+    # DbKeyAlias=DbKeyAlias
+    RsaKeyAlias=RSAkeyAlias
+    ECCkeyAlias=ECCkeyAlias
+    SoftRSA = true
+    SoftECC= true
+    ## default: 300000
+    #OTP_Timeout = 300000
+    ##  default: 300000
+    #Txn_Timeout = 300000
+    # validation fail limits
+    ##  default: 999
+    Digital_Fail_Limit = 999
+    Pattern_Fail_Limit = 999
+    OTP_Fail_Limit = 12
+    # --- Keys settings --- #
+    # KeyStorePath \u6C92\u7528\u5230
+    #KeyStorePath = D:/RP_iDGate/config/Keys
+    HSMPlusMode = Y
+    HSMProvider = Cvn
+    # HSMProvider = SafeNet
+    # RsaKeyAlias = cvn0214a
+    #  WHEN HSMProvider is NextKMS
+    #BizID = OTP
+    # PersoKeyAlias = 01
+    ## slot2:TEST2
+    # DbKeyAlias = TEST2
+    # SetKeyAlias = 05
+    ## SafeNet
+    HSM_SLOT=2
+    HSM_PXD=1234
+    # HSMProvider = Cvn
+    # PersoKeyAlias = CHBKEY
+    # DbKeyAlias = CHBKEY
+    # SetKeyAlias = CHBKEY
+    PersoKeyAlias = CHBKEY123
+    DbKeyAlias = CHBKEY123
+    SetKeyAlias = CHBKEY123
+    AlwaysCallHSM = N
+    # --- ESCP --- #
+    MultiPersoKey = N
+    # Using Multi Perso Key
+    PersoKeyBAlias = 02
+    PersoKeyCAlias = 03
+    # DecryptUrl and EncryptUrl should write full url with client id 
+    EncryptUrl = 
+    DecryptUrl =
+  log4j2.xml: |
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Configuration status="ALL" monitorInterval="30">
+    	<Properties>
+    		<Property name="log-path_WSM">${sys:config_directory}/log/WSM</Property>
+    		<Property name="log-path_WSI">${sys:config_directory}/log/WSI</Property>
+    		<Property name="log-path_AP">${sys:config_directory}/log/AP</Property>
+    		<Property name="log-path_SQL">${sys:config_directory}/log/SQL</Property>
+    		<Property name="log-path_Inbound">${sys:config_directory}/log/Inbound</Property>
+    	</Properties>
+    	<Appenders>
+    		<RollingFile name="WSM-log"
+    			fileName="${log-path_WSM}/WSM.log"
+    			filePattern="${log-path_WSM}/%d{yyyy-MM}/WSM.%d{yyyy-MM-dd}-%i.log">
+    			<PatternLayout>
+    				<pattern>%-d{yyyy-MM-dd HH:mm:ss,SSS} [%t][%-5p] %m%n
+    				</pattern>				
+    			</PatternLayout>
+    			<Policies>
+    				<TimeBasedTriggeringPolicy interval="1"
+    					modulate="true" />
+    				<SizeBasedTriggeringPolicy size="200 MB" />
+    			</Policies>
+    			<DefaultRolloverStrategy max="5">
+    				<Delete basePath="${log-path_WSM}" maxDepth="2">
+    					<IfFileName glob="WSM. *" />
+    					<IfLastModified age="90d" />
+    				</Delete>
+    			</DefaultRolloverStrategy>
+    		</RollingFile>
+    		<RollingFile name="WSI-log"
+    			fileName="${log-path_WSI}/WSI_Log.log"
+    			filePattern="${log-path_WSI}/%d{yyyy-MM}/WSI_Log.%d{yyyy-MM-dd}-%i.log">
+    			<PatternLayout>
+    				<pattern>%-d{yyyy-MM-dd HH:mm:ss,SSS} [%t][%-5p] %m%n
+    				</pattern>	
+    			</PatternLayout>
+    			<Policies>
+    				<TimeBasedTriggeringPolicy interval="1"
+    					modulate="true" />
+    				<SizeBasedTriggeringPolicy size="200 MB" />
+    			</Policies>
+    			<DefaultRolloverStrategy max="5">
+    				<Delete basePath="${log-path_WSI}" maxDepth="2">
+    					<IfFileName glob="WSI. *" />
+    					<IfLastModified age="90d" />
+    				</Delete>
+    			</DefaultRolloverStrategy>
+    		</RollingFile>
+    		<RollingFile name="AP-log"
+    			fileName="${log-path_AP}/AP.log"
+    			filePattern="${log-path_AP}/%d{yyyy-MM}/AP.%d{yyyy-MM-dd}-%i.log">
+    			<PatternLayout>
+    				<pattern>{\"timestamp\":\"%-d{yyyy-MM-dd'T'HH:mm:ss.SSS}\",\"application\":\"Control\",\"thread\":\"[%t]\",\"level\":\"%-5p\",\"log_type\":\"AP\",\"span_id\":\"1\", %m%n
+    				</pattern>
+    			</PatternLayout>
+    			<Policies>
+    				<TimeBasedTriggeringPolicy interval="1"
+    					modulate="true" />
+    				<SizeBasedTriggeringPolicy size="200 MB" />
+    			</Policies>
+    			<DefaultRolloverStrategy max="5">
+    				<Delete basePath="${log-path_AP}" maxDepth="2">
+    					<IfFileName glob="AP. *" />
+    					<IfLastModified age="90d" />
+    				</Delete>
+    			</DefaultRolloverStrategy>
+    		</RollingFile>
+    		<RollingFile name="SQL-log"
+    			fileName="${log-path_SQL}/SQL.log"
+    			filePattern="${log-path_SQL}/%d{yyyy-MM}/SQL.%d{yyyy-MM-dd}-%i.log">
+    			<PatternLayout>
+    				<pattern>{\"timestamp\":\"%-d{yyyy-MM-dd'T'HH:mm:ss.SSS}\",\"application\":\"Control\",\"thread\":\"[%t]\",\"level\":\"%-5p\",\"log_type\":\"SQL\",\"span_id\":\"1\", %m%n
+    				</pattern>
+    			</PatternLayout>
+    			<Policies>
+    				<TimeBasedTriggeringPolicy interval="1"
+    					modulate="true" />
+    				<SizeBasedTriggeringPolicy size="200 MB" />
+    			</Policies>
+    			<DefaultRolloverStrategy max="5">
+    				<Delete basePath="${log-path_SQL}" maxDepth="2">
+    					<IfFileName glob="SQL. *" />
+    					<IfLastModified age="90d" />
+    				</Delete>
+    			</DefaultRolloverStrategy>
+    		</RollingFile>
+    		<RollingFile name="Inbound-log"
+    			fileName="${log-path_Inbound}/Inbound.log"
+    			filePattern="${log-path_Inbound}/%d{yyyy-MM}/Inbound.%d{yyyy-MM-dd}-%i.log">
+    			<PatternLayout>
+    				<pattern>{\"timestamp\":\"%-d{yyyy-MM-dd'T'HH:mm:ss.SSS}\",\"application\":\"Control\",\"thread\":\"[%t]\",\"level\":\"%-5p\",\"log_type\":\"inbound\",\"span_id\":\"1\", %m%n
+    				</pattern>
+    			</PatternLayout>
+    			<Policies>
+    				<TimeBasedTriggeringPolicy interval="1"
+    					modulate="true" />
+    				<SizeBasedTriggeringPolicy size="200 MB" />
+    			</Policies>
+    			<DefaultRolloverStrategy max="5">
+    				<Delete basePath="${log-path_Inbound}" maxDepth="2">
+    					<IfFileName glob="Inbound. *" />
+    					<IfLastModified age="90d" />
+    				</Delete>
+    			</DefaultRolloverStrategy>
+    		</RollingFile>
+    		<Console name="console_log" target="SYSTEM_OUT">
+    			<!-- <PatternLayout -->
+    			<!-- pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" /> -->
+    			<PatternLayout
+    				pattern="%style{%d{ISO8601}}{bright,green} %highlight{%-5level} [%style{%t}{bright,blue}] %style{%C{}.%M(%L)}{bright,yellow} : %msg%n%style{%throwable}{red}"
+    				disableAnsi="false" noConsoleNoAnsi="false" />
+    		</Console>
+    	</Appenders>
+    	<Loggers>
+    		<Logger name="com.WSI.model.Log4jWSI" level="debug"
+    			additivity="false">
+    			<AppenderRef ref="WSI-log" level="ALL" />
+    		</Logger>
+    		<Logger name="com.toppanidgate.fidouaf.common.model.Log4j" level="debug"
+    			additivity="false">
+    			<appender-ref ref="WSM-log" level="ALL" />
+    		</Logger>
+    		<Logger name="com.toppanidgate.fidouaf.common.model.Log4jAP" level="debug"
+    			additivity="false">
+    			<AppenderRef ref="AP-log" level="ALL" />
+    		</Logger>
+    		<Logger name="com.toppanidgate.fidouaf.common.model.Log4jSQL" level="debug"
+    			additivity="false">
+    			<AppenderRef ref="SQL-log" level="ALL" />
+    		</Logger>
+    		<Logger name="com.toppanidgate.fidouaf.common.model.Log4jInbound" level="debug"
+    			additivity="false">
+    			<AppenderRef ref="Inbound-log" level="ALL" />
+    		</Logger>
+    		<Root level="info">
+    			<AppenderRef ref="console_log" level="info" />
+    		</Root>
+    	</Loggers>
+    </Configuration>
