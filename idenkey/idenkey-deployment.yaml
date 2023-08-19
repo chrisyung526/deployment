@@ -16,25 +16,15 @@ spec:
       containers:
       - image: chrisyung/idenkey:0.0.2
         name: idenkey
-        ports:
-        - containerPort: 8080
         volumeMounts:
         - name: application
           mountPath: /opt/idenkey/config
-          subPath: application.properties
-        - name: config
-          mountPath: /opt/idenkey/config
-          subPath: config.properties
-        - name: log4j2
-          mountPath: /opt/idenkey/config
-          subPath: log4j2.xml
+        ports:
+        - containerPort: 8080
       volumes:
       - name: application
         configMap:
           name: idenkey-application
-          items:
-            - key: application.properties
-              path: application.properties
       - name: config
         configMap:
           name: idenkey-config
