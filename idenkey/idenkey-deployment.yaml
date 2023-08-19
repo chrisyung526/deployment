@@ -16,6 +16,9 @@ spec:
       containers:
       - image: chrisyung/idenkey:0.0.3
         name: idenkey
+        env:
+        - name: AWS_SECRET_JDBC_REGION
+          value: "ap-east-1"
         volumeMounts:
         - name: application
           mountPath: /opt/idenkey/config
