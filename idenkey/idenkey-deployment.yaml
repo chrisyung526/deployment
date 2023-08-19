@@ -26,19 +26,19 @@ spec:
         - name: log4j2.xml
           mountPath: /opt/idenkey/config/log4j2.xml
       volumes:
-      - name: application.properties
+      - name: application
         configMap:
            name: idenkey-config
            items:
              - key: application.properties
                path: application.properties
-      - name: config.properties
+      - name: config
         configMap:
            name: idenkey-config
            items:
              - key: config.properties
                path: config.properties
-      - name: log4j2.xml
+      - name: log4j2
         configMap:
            name: idenkey-config
            items:
