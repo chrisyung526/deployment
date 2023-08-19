@@ -14,7 +14,7 @@ spec:
         app: discovery
     spec:
       containers:
-      - image: chrisyung/discovery:latest
+      - image: chrisyung/discovery:0.0.1
         name: discovery
         ports:
         - containerPort: 8761
