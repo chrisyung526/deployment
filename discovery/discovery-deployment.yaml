@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: discovery
+  name: idenkey
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: discovery
+      app: idenkey
   template:
     metadata:
       labels:
-        app: discovery
+        app: idenkey
     spec:
       containers:
-      - image: chrisyung/discovery:latest
-        name: discovery
+      - image: chrisyung/idenkey:0.0.1
+        name: idenkey
         ports:
-        - containerPort: 8761
+        - containerPort: 8080
