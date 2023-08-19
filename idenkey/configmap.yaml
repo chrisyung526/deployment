@@ -270,6 +270,5 @@ data:
     		</Root>
     	</Loggers>
     </Configuration>
-    # DecryptUrl and EncryptUrl should write full url with client id 
-    EncryptUrl = 
-    DecryptUrl =
+  secretsmanager.properties: |
+    drivers.region = ap-east-1
