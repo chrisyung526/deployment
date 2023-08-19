@@ -19,6 +19,10 @@ spec:
         env:
         - name: AWS_SECRET_JDBC_REGION
           value: "ap-east-1"
+        - name: AWS_ACCESS_KEY_ID
+          value: "AKIARZVVK5HVY3VYLMDK"
+        - name: AWS_SECRET_KEY
+          value: "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"
         volumeMounts:
         - name: application
           mountPath: /opt/idenkey/config
