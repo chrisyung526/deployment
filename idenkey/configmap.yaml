@@ -136,11 +136,11 @@ data:
     <?xml version="1.0" encoding="UTF-8"?>
     <Configuration status="ALL" monitorInterval="30">
     	<Properties>
-    		<Property name="log-path_WSM">${sys:config_directory}/log/WSM</Property>
-    		<Property name="log-path_WSI">${sys:config_directory}/log/WSI</Property>
-    		<Property name="log-path_AP">${sys:config_directory}/log/AP</Property>
-    		<Property name="log-path_SQL">${sys:config_directory}/log/SQL</Property>
-    		<Property name="log-path_Inbound">${sys:config_directory}/log/Inbound</Property>
+    		<Property name="log-path_WSM">/opt/idenkey/config/log/WSM</Property>
+    		<Property name="log-path_WSI">/opt/idenkey/config/log/WSI</Property>
+    		<Property name="log-path_AP">/opt/idenkey/config/log/AP</Property>
+    		<Property name="log-path_SQL">/opt/idenkey/config/log/SQL</Property>
+    		<Property name="log-path_Inbound">/opt/idenkey/config/log/Inbound</Property>
     	</Properties>
     	<Appenders>
     		<RollingFile name="WSM-log"
