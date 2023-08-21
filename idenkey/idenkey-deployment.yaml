@@ -29,6 +29,8 @@ spec:
             secretKeyRef:
               name: awssecret
               key: password
+        - name: config_directory
+          value: '/opt/idenkey/config'
         volumeMounts:
         - name: application
           mountPath: /opt/idenkey/config
