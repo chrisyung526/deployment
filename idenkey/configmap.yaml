@@ -6,7 +6,7 @@ data:
   application.properties: |
     server.port=8080
     spring.application.name = iDenkey
-    eureka.client.serviceUrl.defaultZone  = http://127.0.0.1:32266
+    eureka.client.serviceUrl.defaultZone  = http://127.0.0.1:32266/eureka
     eureka.client.healthcheck.enabled = true
     ##disable the spring security on the management endpoints like /env, /refresh etc.
     management.security.enabled = false
