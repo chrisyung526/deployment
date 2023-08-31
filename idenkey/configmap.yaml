@@ -20,9 +20,9 @@ data:
     info.app.name=iDenkey4FIDO
     info.app.description=desc iDenkey4FIDO
     info.app.version=2.2.0
-    config_file_path=/opt/idenkey/config.properties
-    log4j_file_path=file:/opt/idenkey/log4j2.xml
-    err_msg_path=/opt/idenkey/
+    config_file_path=${config_directory}/config.properties
+    log4j_file_path=file:${config_directory}/log4j2.xml
+    err_msg_path=${config_directory}
     Component-A=%TGB$RFV
     Component-B=%^TYGHBN
     Component-C=VFR$#edc
