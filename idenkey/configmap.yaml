@@ -325,7 +325,7 @@ data:
     2021 = SERVER DATA ERROR
     2028 = unexpected error
     2041 = SERVER DATA ERROR
-2048 = unexpected error
-2049 = unexpected error
-2001 = parameter error
-2002 = paremeter error
+    2048 = unexpected error
+    2049 = unexpected error
+    2001 = parameter error
+    2002 = paremeter error
