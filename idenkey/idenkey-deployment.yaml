@@ -14,7 +14,7 @@ spec:
         app: idenkey
     spec:
       containers:
-      - image: chrisyung/idenkey:0.0.6
+      - image: chrisyung/idenkey:0.0.7
         name: idenkey
         env:
         - name: AWS_SECRET_JDBC_REGION
