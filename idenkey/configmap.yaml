@@ -28,7 +28,7 @@ data:
     Component-C=VFR$#edc
     spring.datasource.driver-class-name=com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
     spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect
-    spring.datasource.url=jdbc-secretsmanager:mysql://idenkey-instance-1.ckcctg5jmane.ap-east-1.rds.amazonaws.com:3306
+    spring.datasource.url=jdbc-secretsmanager:mysql://idenkey-instance-1.ckcctg5jmane.ap-east-1.rds.amazonaws.com:3306/idgfid
     spring.datasource.username=sit/mysql_ro
     spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
     spring.jpa.properties.hibernate.dialect.storage_engine=innodb
