@@ -74,7 +74,7 @@ data:
     WSI_API_Key = API_Key
     WSM_API_Key = API_Key
     # FIDO server settings
-    FIDO_SV_IP = http://192.168.0.116:10000/GW/WSM/
+    # FIDO_SV_IP = http://192.168.0.116:10000/GW/WSM/
     # validation fail limits
     #Digital_Fail_Limit = 3
     #Pattern_Fail_Limit = 3
@@ -82,7 +82,7 @@ data:
     # Look out for space at tail when you're setting this config
     ## 1 OnlyOTP = true (\u4E0D\u6AA2\u6838 step 4  \u5167\u7684 OTP and ...  ; default = false)
     ## 2 OnlyFIDO = true (\u4E0D\u6253 step 4  \u5167\u7684 FIDO ; default = false)
-    # OnlyOTP = true
+    OnlyOTP = true
     #OnlyFIDO = true
     ##  default enableOTP = true
     # enableOTP = false
