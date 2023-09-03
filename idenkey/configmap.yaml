@@ -74,7 +74,7 @@ data:
     WSI_API_Key = API_Key
     WSM_API_Key = API_Key
     # FIDO server settings
-    # FIDO_SV_IP = http://192.168.0.116:10000/GW/WSM/
+    FIDO_SV_IP = http://192.168.0.116:10000/GW/WSM/
     # validation fail limits
     #Digital_Fail_Limit = 3
     #Pattern_Fail_Limit = 3
