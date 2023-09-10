@@ -17,6 +17,8 @@ spec:
       - image: chrisyung/idenkey:0.1.78
         name: idenkey
         env:
+        - name: TZ
+          value: Asia/Hong_Kong
         - name: AWS_SECRET_JDBC_REGION
           value: "ap-east-1"
         - name: AWS_ACCESS_KEY_ID
