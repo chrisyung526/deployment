@@ -14,7 +14,7 @@ spec:
         app: idenkey
     spec:
       containers:
-      - image: chrisyung/idenkey:0.2.27
+      - image: chrisyung/idenkey:0.2.28
         name: idenkey
         env:
         - name: TZ
